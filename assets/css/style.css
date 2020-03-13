@@ -1,5 +1,17 @@
+html, body {
+    height: 100%;
+}
+
 h1 {
     color: green;
     text-align: center;
     font-size: 50px;
+}
+
+.main {
+    width: 100%;
+    background-image: url('https://github.com/megswen/Psychic-Game/blob/master/assets/images/blue-and-red-galaxy-artwork-1629236.jpg?raw=true');
+    background-repeat: repaeat;
+    min-height: 100%;
+    position: relative;
 }
