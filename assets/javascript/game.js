@@ -1,5 +1,4 @@
 // List the letters the user and computer can guess in an array
-var userGuess = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var computerChoice = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
 // Create variables that hold the number of wins, losses, and guesses left
@@ -17,31 +16,34 @@ var lossesText = document.getElementById("losses-text");
 var guessesLeftText = document.getElementById("guessesleft-text");
 var userGuessesText = document.getElementById("userguesses-text");
 
-// Create a function that is run when the user presses a key
-document.onkeyup = function(event) {
-    userGuess.textContent=event.key;
-
-// Determine what key was pressed
-
-
-// Create a function that will make the computer select a random letter from the computerChoice array
 var computerGuess = computerChoice[Math.floor(Math.random() * computerChoice.length)];
 
-// Create an if/else statement to determine if the user's letter guessed matches with the computer's, how many guesses are left, and increment wins or losses accordingly
-if(userGuess === computerGuess)
-{wins ++} else if (userGuess != computerGuess)
-{guessesLeft --} else if (guessesLeft < 1)
-{losses ++};
+// Create a function that is run when the user presses a key
+document.onkeyup = function (event) {
+    var letter = event.key;
 
-// Create a for Loop to make the guesses left decrement by 1 for every wrong letter guessed
-var i;
-for (i = 10; i < guessesLeft.length; i--)
+    if (!lettersGuessed.includes(letter)) {
+        lettersGuessed.push(letter);
+        if (letter === computerGuess) {
+            wins++;
+        } else {
+            guessesLeft--;
+            if(guessesLeft === 0) {
+                losses++;
+                guessesLeft = 10;
+                lettersGuessed = [];
+                computerGuess = computerChoice[Math.floor(Math.random() * computerChoice.length)];
+            }
+        }
+        console.log(losses);
+        console.log(lettersGuessed);
+    }
 
-// Display the wins, losses, and guesses left in their div ID's
-winsText.textContent = "Your Wins: " + wins;
-lossesText.textContent = "Your Losses: " + losses;
-guessesLeftText.textContent = "Number of Guesses Left: " + guessesLeft;
+    // Display the wins, losses, and guesses left in their div ID's
+    winsText.textContent = "Your wins: " + wins;
+    lossesText.textContent = "Your losses: " + losses;
+    guessesLeftText.textContent = "Number of guesses left: " + guessesLeft;
 
-// Display all letters guessed by user for the duration of the round
-
+    // Display all letters guessed by user for the duration of the round
+    lettersGuessed.textContent = "Letters guessed: " + lettersGuessed;
 };
