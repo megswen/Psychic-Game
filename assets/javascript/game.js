@@ -10,7 +10,6 @@ var guessesLeft = 10;
 var lettersGuessed = [];
 
 // Create variables that hold the html elements where we want to display info
-var directionsText = document.getElementById("directions-text");
 var winsText = document.getElementById("wins-text");
 var lossesText = document.getElementById("losses-text");
 var guessesLeftText = document.getElementById("guessesleft-text");
