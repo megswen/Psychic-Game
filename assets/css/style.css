@@ -13,7 +13,7 @@ h1 {
 
 .main {
     width: 100%;
-    background-image: url('https://github.com/megswen/Psychic-Game/blob/master/assets/images/blue-and-purple-cosmic-sky-956999.jpg?raw=true');
+    background-image: url('../images/blue-and-purple-cosmic-sky-956999.jpg');
     background-repeat: repeat;
     min-height: 100%;
     position: relative;

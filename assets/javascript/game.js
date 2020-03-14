@@ -13,7 +13,7 @@ var lettersGuessed = [];
 var winsText = document.getElementById("wins-text");
 var lossesText = document.getElementById("losses-text");
 var guessesLeftText = document.getElementById("guessesleft-text");
-var userGuessesText = document.getElementById("userguesses-text");
+var lettersGuessedText = document.getElementById("lettersguessed-text");
 
 var computerGuess = computerChoice[Math.floor(Math.random() * computerChoice.length)];
 
@@ -25,17 +25,20 @@ document.onkeyup = function (event) {
         lettersGuessed.push(letter);
         if (letter === computerGuess) {
             wins++;
+            alert("You won!");
+            guessesLeft = 10;
+            lettersGuessed = [];
+            computerGuess = computerChoice[Math.floor(Math.random() * computerChoice.length)];
         } else {
             guessesLeft--;
             if(guessesLeft === 0) {
                 losses++;
+                alert("You lost!");
                 guessesLeft = 10;
                 lettersGuessed = [];
                 computerGuess = computerChoice[Math.floor(Math.random() * computerChoice.length)];
             }
         }
-        console.log(losses);
-        console.log(lettersGuessed);
     }
 
     // Display the wins, losses, and guesses left in their div ID's
@@ -44,5 +47,5 @@ document.onkeyup = function (event) {
     guessesLeftText.textContent = "Number of guesses left: " + guessesLeft;
 
     // Display all letters guessed by user for the duration of the round
-    lettersGuessed.textContent = "Letters guessed: " + lettersGuessed;
+    lettersGuessedText.textContent = "Letters guessed: " + lettersGuessed;
 };
